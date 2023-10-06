@@ -52,7 +52,7 @@ func main() {
 			}
 
 			if err := handler.Register(user, db); err != nil {
-				fmt.Println("Kesalahan saat registrasi", err)
+				log.Fatal(err)
 			} else {
 				fmt.Println("Registrasi berhasil!")
 			}
@@ -65,10 +65,8 @@ func main() {
 			fmt.Print("Password: ")
 			fmt.Scanln(&password)
 
-			user, authenticated, err := handler.Login(username, password, db)
-			if err != nil {
-				panic(err.Error())
-			} else if authenticated {
+			user, authenticated, _ := handler.Login(username, password, db)
+			if authenticated {
 				for {
 					fmt.Printf("\nSelamat datang %v. Pilih opsi berikut:\n", user.Username)
 					fmt.Println("1. Tampilkan semua game")
@@ -100,12 +98,16 @@ func main() {
 						}
 
 					case 3:
-						fmt.Print("Masukkan ID game: ")
 						var gameOption int
-						scanner.Scan()
-						_, err := fmt.Sscanf(scanner.Text(), "%d", &gameOption)
-						if err != nil {
-							log.Fatal("Input bukan merupakan angka")
+						for {
+							fmt.Print("Masukkan ID game: ")
+							scanner.Scan()
+							_, err := fmt.Sscanf(scanner.Text(), "%d", &gameOption)
+							if err != nil {
+								fmt.Println("Input bukan merupakan angka")
+								continue
+							}
+							break
 						}
 
 						err = handler.AddCart(db, user, gameOption)
@@ -114,12 +116,16 @@ func main() {
 						}
 
 					case 4:
-						fmt.Print("Masukkan ID game yang ingin dihapus: ")
 						var deleteGameOption int
-						scanner.Scan()
-						_, err := fmt.Sscanf(scanner.Text(), "%d", &deleteGameOption)
-						if err != nil {
-							log.Fatal("Input bukan merupakan angka")
+						for {
+							fmt.Print("Masukkan ID game yang ingin dihapus: ")
+							scanner.Scan()
+							_, err := fmt.Sscanf(scanner.Text(), "%d", &deleteGameOption)
+							if err != nil {
+								fmt.Println("Input bukan merupakan angka")
+								continue
+							}
+							break
 						}
 
 						err = handler.DeleteCart(db, user, deleteGameOption)
@@ -137,7 +143,7 @@ func main() {
 					}
 				}
 			} else {
-				fmt.Println("Login gagal")
+				log.Fatal("Username / Password tidak sesuai")
 			}
 
 		case 3:

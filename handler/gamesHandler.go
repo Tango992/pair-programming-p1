@@ -14,7 +14,7 @@ func DisplayGames(db *sql.DB) error {
 	defer rows.Close()
 
 	var games entity.Games
-	fmt.Printf("\n[ID] - [Name] - [Description] - [Published]")
+	fmt.Printf("\n[ID] - [Name] - [Description] - [Published]\n")
 	for rows.Next() {
 		err := rows.Scan(&games.Id, &games.Name, &games.Description, &games.Published)
 		if err != nil {

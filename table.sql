@@ -21,19 +21,10 @@ CREATE TABLE user_games (
 
 INSERT INTO games (name, description, published)
 VALUES 
-('dota2', 'RPG', '2013-07-09'),
-('valorant', 'FPS', '2020-06-02'),
-('cs:go', 'FPS', '2012-08-21'),
-('battle realms', 'RPG', '2001-11-07');
-
-INSERT INTO users (username, password)
-VALUES
-('admin', 'admin');
-
-INSERT INTO user_games (user_id, game_id)
-VALUES
-(1, 1),
-(1, 2);
+('DOTA2', 'RPG by Valve', '2013-07-09'),
+('Valorant', 'FPS with special skills', '2020-06-02'),
+('CS:GO', 'FPS with Police vs Terrorists', '2012-08-21'),
+('Battle Realms', 'Nostalgic RPG', '2001-11-07');
 
 
 
