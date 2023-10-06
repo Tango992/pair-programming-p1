@@ -1,0 +1,16 @@
+MAIN MENU :
+    - Register
+    - Login
+
+    If Register:
+        - Ask username & password
+
+    If Login:
+        - Ask username & password
+
+        If account is valid:
+            SUB MENU:
+                - Display All Games
+                - Display cart
+                - Add Game to cart
+                - Remove Game from cart
