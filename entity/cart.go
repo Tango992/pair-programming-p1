@@ -7,7 +7,13 @@ type DisplayCart struct {
 }
 
 type AddCart struct {
-	Id int
+	Id     int
+	UserId int
+	GameId int
+}
+
+type DeleteCart struct {
+	Id     int
 	UserId int
 	GameId int
 }

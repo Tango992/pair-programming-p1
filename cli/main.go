@@ -8,6 +8,7 @@ import (
 	"pair-programming/config"
 	"pair-programming/entity"
 	"pair-programming/handler"
+
 	_ "github.com/go-sql-driver/mysql"
 )
 
@@ -45,7 +46,7 @@ func main() {
 			fmt.Print("Masukkan password: ")
 			fmt.Scanln(&password)
 
-			user := entity.User {
+			user := entity.User{
 				Username: username,
 				Password: password,
 			}
@@ -113,7 +114,18 @@ func main() {
 						}
 
 					case 4:
-						fmt.Println("Opsi 4")
+						fmt.Print("Masukkan ID game yang ingin dihapus: ")
+						var deleteGameOption int
+						scanner.Scan()
+						_, err := fmt.Sscanf(scanner.Text(), "%d", &deleteGameOption)
+						if err != nil {
+							log.Fatal("Input bukan merupakan angka")
+						}
+
+						err = handler.DeleteCart(db, user, deleteGameOption)
+						if err != nil {
+							log.Fatal(err)
+						}
 
 					case 5:
 						fmt.Println("Sampai jumpa!")
