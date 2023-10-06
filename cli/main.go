@@ -99,7 +99,18 @@ func main() {
 						}
 
 					case 3:
-						fmt.Println("Opsi 3")
+						fmt.Print("Masukkan ID game: ")
+						var gameOption int
+						scanner.Scan()
+						_, err := fmt.Sscanf(scanner.Text(), "%d", &gameOption)
+						if err != nil {
+							log.Fatal("Input bukan merupakan angka")
+						}
+
+						err = handler.AddCart(db, user, gameOption)
+						if err != nil {
+							log.Fatal(err)
+						}
 
 					case 4:
 						fmt.Println("Opsi 4")
