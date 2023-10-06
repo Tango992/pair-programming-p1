@@ -93,7 +93,10 @@ func main() {
 						}
 
 					case 2:
-						fmt.Println("Opsi 2")
+						err := handler.DisplayCart(db, user)
+						if err != nil {
+							log.Fatal(err)
+						}
 
 					case 3:
 						fmt.Println("Opsi 3")
