@@ -17,6 +17,6 @@ func AddCart(db *sql.DB, user entity.User, gameId int) error {
 		return err
 	}
 
-	fmt.Printf("Game ID %v berhasil dimasukkan ke dalam cart\n", gameId)
+	fmt.Printf("\nGame ID %v berhasil dimasukkan ke dalam cart\n", gameId)
 	return nil
 }

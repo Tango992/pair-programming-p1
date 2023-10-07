@@ -20,9 +20,7 @@ func DisplayGames(db *sql.DB) error {
 		if err != nil {
 			return err
 		}
-
 		fmt.Printf("[%v] - [%v] - [%v] - [%v]\n",games.Id, games.Name, games.Description, games.Published)
 	}
-	fmt.Println()
 	return nil
 }

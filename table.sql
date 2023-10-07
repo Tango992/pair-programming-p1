@@ -25,6 +25,3 @@ VALUES
 ('Valorant', 'FPS with special skills', '2020-06-02'),
 ('CS:GO', 'FPS with Police vs Terrorists', '2012-08-21'),
 ('Battle Realms', 'Nostalgic RPG', '2001-11-07');
-
-
-
